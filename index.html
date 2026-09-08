@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vietnam Market Dashboard</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
+    overflow: hidden;
+}
+
+.app {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    min-width: 240px;
+    background: #111827;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 22px 14px;
+}
+
+.brand {
+    padding: 4px 12px 24px 12px;
+}
+
+.brand-title {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.brand-subtitle {
+    margin-top: 6px;
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-item {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: #d1d5db;
+    padding: 12px 13px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.nav-item:hover {
+    background: #1f2937;
+    color: white;
+}
+
+.nav-item.active {
+    background: #374151;
+    color: white;
+    font-weight: 600;
+}
+
+.nav-icon {
+    width: 22px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 14px 12px 4px;
+    color: #6b7280;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.main {
+    flex: 1;
+    min-width: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar {
+    height: 64px;
+    min-height: 64px;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.topbar-title {
+    font-size: 18px;
+    font-weight: 650;
+}
+
+.topbar-status {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.content {
+    flex: 1;
+    min-height: 0;
+    padding: 0;
+    background: #f4f6f8;
+}
+
+.module-frame {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: white;
+}
+
+@media (max-width: 760px) {
+
+    .sidebar {
+        width: 72px;
+        min-width: 72px;
+        padding: 14px 8px;
+    }
+
+    .brand {
+        padding: 8px 4px 18px;
+        text-align: center;
+    }
+
+    .brand-title {
+        font-size: 0;
+    }
+
+    .brand-title::after {
+        content: "VM";
+        font-size: 20px;
+    }
+
+    .brand-subtitle {
+        display: none;
+    }
+
+    .nav-item {
+        justify-content: center;
+        padding: 12px 6px;
+    }
+
+    .nav-item span:last-child {
+        display: none;
+    }
+
+    .topbar {
+        padding: 0 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-title">
+                Vietnam Market
+            </div>
+
+            <div class="brand-subtitle">
+                Market & Economic Dashboard
+            </div>
+        </div>
+
+        <nav class="nav">
+            
+        <button
+            class="nav-item active"
+            data-target="home"
+            onclick="showModule('home', this)"
+        >
+            <span class="nav-icon">◉</span>
+            <span>Tổng quan</span>
+        </button>
+        
+        <button
+            class="nav-item "
+            data-target="stocks"
+            onclick="showModule('stocks', this)"
+        >
+            <span class="nav-icon">▣</span>
+            <span>Chứng khoán</span>
+        </button>
+        
+        <button
+            class="nav-item "
+            data-target="gold"
+            onclick="showModule('gold', this)"
+        >
+            <span class="nav-icon">◆</span>
+            <span>Vàng</span>
+        </button>
+        
+        <button
+            class="nav-item "
+            data-target="oil"
+            onclick="showModule('oil', this)"
+        >
+            <span class="nav-icon">●</span>
+            <span>Dầu</span>
+        </button>
+        
+        <button
+            class="nav-item "
+            data-target="real_estate"
+            onclick="showModule('real_estate', this)"
+        >
+            <span class="nav-icon">⌂</span>
+            <span>Bất động sản</span>
+        </button>
+        
+        <button
+            class="nav-item "
+            data-target="fx"
+            onclick="showModule('fx', this)"
+        >
+            <span class="nav-icon">↔</span>
+            <span>Tỷ giá</span>
+        </button>
+        
+        <button
+            class="nav-item "
+            data-target="interest_rates"
+            onclick="showModule('interest_rates', this)"
+        >
+            <span class="nav-icon">%</span>
+            <span>Lãi suất</span>
+        </button>
+        
+        </nav>
+
+        <div class="sidebar-footer">
+            Vietnam Market Dashboard<br>
+            Data & analysis
+        </div>
+
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div
+                class="topbar-title"
+                id="page-title"
+            >
+                Tổng quan
+            </div>
+
+            <div class="topbar-status">
+                Dashboard
+            </div>
+
+        </header>
+
+        <section class="content">
+
+            
+        <iframe
+            id="frame-home"
+            class="module-frame"
+            src="home_dashboard.html"
+            style="display:block;"
+            title="Tổng quan"
+        ></iframe>
+        
+        <iframe
+            id="frame-stocks"
+            class="module-frame"
+            src="stocks_dashboard.html"
+            style="display:none;"
+            title="Chứng khoán"
+        ></iframe>
+        
+        <iframe
+            id="frame-gold"
+            class="module-frame"
+            src="gold_dashboard.html"
+            style="display:none;"
+            title="Vàng"
+        ></iframe>
+        
+        <iframe
+            id="frame-oil"
+            class="module-frame"
+            src="oil_dashboard.html"
+            style="display:none;"
+            title="Dầu"
+        ></iframe>
+        
+        <iframe
+            id="frame-real_estate"
+            class="module-frame"
+            src="real_estate_dashboard.html"
+            style="display:none;"
+            title="Bất động sản"
+        ></iframe>
+        
+        <iframe
+            id="frame-fx"
+            class="module-frame"
+            src="fx_dashboard.html"
+            style="display:none;"
+            title="Tỷ giá"
+        ></iframe>
+        
+        <iframe
+            id="frame-interest_rates"
+            class="module-frame"
+            src="interest_rates_dashboard.html"
+            style="display:none;"
+            title="Lãi suất"
+        ></iframe>
+        
+
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+
+const moduleNames = {
+    home: "Tổng quan",
+    stocks: "Chứng khoán",
+    gold: "Vàng",
+    oil: "Dầu",
+    real_estate: "Bất động sản",
+    fx: "Tỷ giá",
+    interest_rates: "Lãi suất"
+};
+
+function showModule(id, button) {
+
+    document.querySelectorAll(".module-frame").forEach(
+        frame => {
+            frame.style.display = "none";
+        }
+    );
+
+    const target = document.getElementById("frame-" + id);
+
+    if (target) {
+        target.style.display = "block";
+    }
+
+    document.querySelectorAll(".nav-item").forEach(
+        item => {
+            item.classList.remove("active");
+        }
+    );
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+    const title = document.getElementById("page-title");
+
+    if (title) {
+        title.textContent = moduleNames[id] || "Vietnam Market";
+    }
+}
+
+</script>
+
+</body>
+</html>
