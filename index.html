@@ -1,415 +1,347 @@
+
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Vietnam Market Dashboard</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
 
-html,
 body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
     font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
         Arial,
+        Helvetica,
         sans-serif;
-    background: #f4f6f8;
-    color: #1f2937;
-    overflow: hidden;
+
+    margin: 0;
+    padding: 30px;
+
+    background: #f5f6f8;
 }
 
-.app {
-    display: flex;
-    width: 100%;
-    height: 100vh;
+.container {
+    max-width: 1400px;
+    margin: auto;
 }
 
-.sidebar {
-    width: 240px;
-    min-width: 240px;
-    background: #111827;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    padding: 22px 14px;
+h1 {
+    margin-bottom: 5px;
 }
 
-.brand {
-    padding: 4px 12px 24px 12px;
+.subtitle {
+    color: #666;
+    margin-bottom: 25px;
 }
 
-.brand-title {
-    font-size: 21px;
-    font-weight: 700;
-    letter-spacing: -0.3px;
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
 }
 
-.brand-subtitle {
-    margin-top: 6px;
-    color: #9ca3af;
-    font-size: 12px;
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+
+    box-shadow:
+        0 1px 5px
+        rgba(0,0,0,0.08);
 }
 
-.nav {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.nav-item {
-    width: 100%;
-    border: 0;
-    background: transparent;
-    color: #d1d5db;
-    padding: 12px 13px;
-    border-radius: 9px;
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    text-align: left;
+.module-name {
     font-size: 14px;
-    cursor: pointer;
-    transition: background 0.15s, color 0.15s;
+    color: #666;
+    margin-bottom: 5px;
 }
 
-.nav-item:hover {
-    background: #1f2937;
-    color: white;
-}
-
-.nav-item.active {
-    background: #374151;
-    color: white;
-    font-weight: 600;
-}
-
-.nav-icon {
-    width: 22px;
-    text-align: center;
-    font-size: 16px;
-}
-
-.sidebar-footer {
-    margin-top: auto;
-    padding: 14px 12px 4px;
-    color: #6b7280;
-    font-size: 11px;
-    line-height: 1.5;
-}
-
-.main {
-    flex: 1;
-    min-width: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.topbar {
-    height: 64px;
-    min-height: 64px;
-    background: white;
-    border-bottom: 1px solid #e5e7eb;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-}
-
-.topbar-title {
+.metric-name {
     font-size: 18px;
-    font-weight: 650;
+    font-weight: bold;
 }
 
-.topbar-status {
+.value {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 14px;
+}
+
+.unit {
+    font-size: 14px;
+    font-weight: normal;
+    color: #666;
+}
+
+.change {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.meta {
+    margin-top: 8px;
     font-size: 12px;
-    color: #6b7280;
+    color: #777;
 }
 
-.content {
-    flex: 1;
-    min-height: 0;
-    padding: 0;
-    background: #f4f6f8;
+.footer {
+    margin-top: 30px;
+    color: #777;
+    font-size: 13px;
 }
 
-.module-frame {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    background: white;
+@media (max-width: 900px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
 }
 
-@media (max-width: 760px) {
+@media (max-width: 600px) {
 
-    .sidebar {
-        width: 72px;
-        min-width: 72px;
-        padding: 14px 8px;
+    body {
+        padding: 15px;
     }
 
-    .brand {
-        padding: 8px 4px 18px;
-        text-align: center;
+    .cards {
+        grid-template-columns: 1fr;
     }
 
-    .brand-title {
-        font-size: 0;
-    }
-
-    .brand-title::after {
-        content: "VM";
-        font-size: 20px;
-    }
-
-    .brand-subtitle {
-        display: none;
-    }
-
-    .nav-item {
-        justify-content: center;
-        padding: 12px 6px;
-    }
-
-    .nav-item span:last-child {
-        display: none;
-    }
-
-    .topbar {
-        padding: 0 14px;
-    }
 }
+
 </style>
+
 </head>
 
 <body>
 
-<div class="app">
+<div class="container">
 
-    <aside class="sidebar">
+<h1>
+Vietnam Market Dashboard
+</h1>
 
-        <div class="brand">
-            <div class="brand-title">
-                Vietnam Market
-            </div>
+<div class="subtitle">
+Tổng quan thị trường Việt Nam ·
+Bản cập nhật mới nhất của từng module
+</div>
 
-            <div class="brand-subtitle">
-                Market & Economic Dashboard
-            </div>
+<div class="cards">
+
+
+    <div class="card">
+
+        <div class="module-name">
+            Chứng khoán
         </div>
 
-        <nav class="nav">
-            
-        <button
-            class="nav-item active"
-            data-target="home"
-            onclick="showModule('home', this)"
-        >
-            <span class="nav-icon">◉</span>
-            <span>Tổng quan</span>
-        </button>
-        
-        <button
-            class="nav-item "
-            data-target="stocks"
-            onclick="showModule('stocks', this)"
-        >
-            <span class="nav-icon">▣</span>
-            <span>Chứng khoán</span>
-        </button>
-        
-        <button
-            class="nav-item "
-            data-target="gold"
-            onclick="showModule('gold', this)"
-        >
-            <span class="nav-icon">◆</span>
-            <span>Vàng</span>
-        </button>
-        
-        <button
-            class="nav-item "
-            data-target="oil"
-            onclick="showModule('oil', this)"
-        >
-            <span class="nav-icon">●</span>
-            <span>Dầu</span>
-        </button>
-        
-        <button
-            class="nav-item "
-            data-target="real_estate"
-            onclick="showModule('real_estate', this)"
-        >
-            <span class="nav-icon">⌂</span>
-            <span>Bất động sản</span>
-        </button>
-        
-        <button
-            class="nav-item "
-            data-target="fx"
-            onclick="showModule('fx', this)"
-        >
-            <span class="nav-icon">↔</span>
-            <span>Tỷ giá</span>
-        </button>
-        
-        <button
-            class="nav-item "
-            data-target="interest_rates"
-            onclick="showModule('interest_rates', this)"
-        >
-            <span class="nav-icon">%</span>
-            <span>Lãi suất</span>
-        </button>
-        
-        </nav>
-
-        <div class="sidebar-footer">
-            Vietnam Market Dashboard<br>
-            Data & analysis
+        <div class="metric-name">
+            VN-Index
         </div>
 
-    </aside>
+        <div class="value">
+            1,827.12
+            <span class="unit">
+                điểm
+            </span>
+        </div>
 
-    <main class="main">
+        <div class="change">
+            -0.18%
+        </div>
 
-        <header class="topbar">
+        <div class="meta">
+            Cập nhật:
+            09/09/2026
+        </div>
 
-            <div
-                class="topbar-title"
-                id="page-title"
-            >
-                Tổng quan
-            </div>
+        <div class="meta">
+            Nguồn: Stockbiz EOD
+        </div>
 
-            <div class="topbar-status">
-                Dashboard
-            </div>
+    </div>
+    
+    <div class="card">
 
-        </header>
+        <div class="module-name">
+            Vàng
+        </div>
 
-        <section class="content">
+        <div class="metric-name">
+            Giá vàng SJC
+        </div>
 
-            
-        <iframe
-            id="frame-home"
-            class="module-frame"
-            src="home_dashboard.html"
-            style="display:block;"
-            title="Tổng quan"
-        ></iframe>
-        
-        <iframe
-            id="frame-stocks"
-            class="module-frame"
-            src="stocks_dashboard.html"
-            style="display:none;"
-            title="Chứng khoán"
-        ></iframe>
-        
-        <iframe
-            id="frame-gold"
-            class="module-frame"
-            src="gold_dashboard.html"
-            style="display:none;"
-            title="Vàng"
-        ></iframe>
-        
-        <iframe
-            id="frame-oil"
-            class="module-frame"
-            src="oil_dashboard.html"
-            style="display:none;"
-            title="Dầu"
-        ></iframe>
-        
-        <iframe
-            id="frame-real_estate"
-            class="module-frame"
-            src="real_estate_dashboard.html"
-            style="display:none;"
-            title="Bất động sản"
-        ></iframe>
-        
-        <iframe
-            id="frame-fx"
-            class="module-frame"
-            src="fx_dashboard.html"
-            style="display:none;"
-            title="Tỷ giá"
-        ></iframe>
-        
-        <iframe
-            id="frame-interest_rates"
-            class="module-frame"
-            src="interest_rates_dashboard.html"
-            style="display:none;"
-            title="Lãi suất"
-        ></iframe>
-        
+        <div class="value">
+            147,100,000.00
+            <span class="unit">
+                VNĐ/lượng
+            </span>
+        </div>
 
-        </section>
+        <div class="change">
+            +0.41%
+        </div>
 
-    </main>
+        <div class="meta">
+            Cập nhật:
+            08/09/2026
+        </div>
+
+        <div class="meta">
+            Nguồn: vnstock
+        </div>
+
+    </div>
+    
+    <div class="card">
+
+        <div class="module-name">
+            Dầu
+        </div>
+
+        <div class="metric-name">
+            Giá dầu WTI
+        </div>
+
+        <div class="value">
+            93.05
+            <span class="unit">
+                USD/thùng
+            </span>
+        </div>
+
+        <div class="change">
+            +1.72%
+        </div>
+
+        <div class="meta">
+            Cập nhật:
+            08/09/2026
+        </div>
+
+        <div class="meta">
+            Nguồn: yfinance
+        </div>
+
+    </div>
+    
+    <div class="card">
+
+        <div class="module-name">
+            Tỷ giá
+        </div>
+
+        <div class="metric-name">
+            Tỷ giá USD/VND
+        </div>
+
+        <div class="value">
+            26,150.00
+            <span class="unit">
+                VNĐ/USD
+            </span>
+        </div>
+
+        <div class="change">
+            -0.23%
+        </div>
+
+        <div class="meta">
+            Cập nhật:
+            08/09/2026
+        </div>
+
+        <div class="meta">
+            Nguồn: vnstock
+        </div>
+
+    </div>
+    
+    <div class="card">
+
+        <div class="module-name">
+            Lãi suất
+        </div>
+
+        <div class="metric-name">
+            Lãi suất tái cấp vốn
+        </div>
+
+        <div class="value">
+            4.50
+            <span class="unit">
+                %/năm
+            </span>
+        </div>
+
+        <div class="change">
+            +0.00%
+        </div>
+
+        <div class="meta">
+            Cập nhật:
+            07/09/2026
+        </div>
+
+        <div class="meta">
+            Nguồn: Dữ Liệu Kinh Tế
+        </div>
+
+    </div>
+    
+    <div class="card">
+
+        <div class="module-name">
+            Bất động sản
+        </div>
+
+        <div class="metric-name">
+            Giao dịch BĐS thành công
+        </div>
+
+        <div class="value">
+            100,005.00
+            <span class="unit">
+                giao dịch
+            </span>
+        </div>
+
+        <div class="change">
+            N/A
+        </div>
+
+        <div class="meta">
+            Cập nhật:
+            30/06/2026
+        </div>
+
+        <div class="meta">
+            Nguồn: Bo Xay Dung
+        </div>
+
+    </div>
+    
 
 </div>
 
-<script>
+<div class="footer">
 
-const moduleNames = {
-    home: "Tổng quan",
-    stocks: "Chứng khoán",
-    gold: "Vàng",
-    oil: "Dầu",
-    real_estate: "Bất động sản",
-    fx: "Tỷ giá",
-    interest_rates: "Lãi suất"
-};
+Mỗi module sử dụng bản ghi mới nhất
+của metric chính được cấu hình.
 
-function showModule(id, button) {
+</div>
 
-    document.querySelectorAll(".module-frame").forEach(
-        frame => {
-            frame.style.display = "none";
-        }
-    );
-
-    const target = document.getElementById("frame-" + id);
-
-    if (target) {
-        target.style.display = "block";
-    }
-
-    document.querySelectorAll(".nav-item").forEach(
-        item => {
-            item.classList.remove("active");
-        }
-    );
-
-    if (button) {
-        button.classList.add("active");
-    }
-
-    const title = document.getElementById("page-title");
-
-    if (title) {
-        title.textContent = moduleNames[id] || "Vietnam Market";
-    }
-}
-
-</script>
+</div>
 
 </body>
+
 </html>

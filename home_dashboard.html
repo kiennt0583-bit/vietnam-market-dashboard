@@ -1,17 +1,35 @@
 
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Tổng quan Thị trường Việt Nam</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Vietnam Market Dashboard</title>
 
 <style>
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 30px;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    margin: 0;
+    padding: 30px;
+
     background: #f5f6f8;
+}
+
+.container {
+    max-width: 1400px;
+    margin: auto;
 }
 
 h1 {
@@ -23,7 +41,7 @@ h1 {
     margin-bottom: 25px;
 }
 
-.grid {
+.cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 18px;
@@ -31,176 +49,299 @@ h1 {
 
 .card {
     background: white;
+    padding: 22px;
     border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+    box-shadow:
+        0 1px 5px
+        rgba(0,0,0,0.08);
 }
 
-.card-title {
-    font-size: 20px;
+.module-name {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.metric-name {
+    font-size: 18px;
     font-weight: bold;
 }
 
-.metric {
-    color: #666;
-    margin-top: 8px;
-}
-
 .value {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: bold;
     margin-top: 14px;
 }
 
 .unit {
+    font-size: 14px;
+    font-weight: normal;
     color: #666;
 }
 
 .change {
-    margin-top: 10px;
+    margin-top: 8px;
+    font-size: 16px;
     font-weight: bold;
 }
 
 .meta {
-    margin-top: 16px;
+    margin-top: 8px;
     font-size: 12px;
     color: #777;
-    line-height: 1.5;
 }
 
-.status {
-    margin-top: 12px;
-    font-size: 12px;
-    font-weight: bold;
+.footer {
+    margin-top: 30px;
+    color: #777;
+    font-size: 13px;
 }
+
+@media (max-width: 900px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
-<h1>Tổng quan Thị trường Việt Nam</h1>
+<div class="container">
+
+<h1>
+Vietnam Market Dashboard
+</h1>
 
 <div class="subtitle">
-    Tổng quan nhanh — dữ liệu mới nhất của từng nhóm thị trường
+Tổng quan thị trường Việt Nam ·
+Bản cập nhật mới nhất của từng module
 </div>
 
-<div class="grid">
-    
+<div class="cards">
+
+
     <div class="card">
-        <div class="card-title">Chứng khoán</div>
-        <div class="metric">VN-Index</div>
 
-        <div class="value">1,817.00</div>
-        <div class="unit">điểm</div>
+        <div class="module-name">
+            Chứng khoán
+        </div>
 
-        <div class="change">Thay đổi: -0.25%</div>
+        <div class="metric-name">
+            VN-Index
+        </div>
+
+        <div class="value">
+            1,827.12
+            <span class="unit">
+                điểm
+            </span>
+        </div>
+
+        <div class="change">
+            -0.18%
+        </div>
 
         <div class="meta">
-            Dữ liệu: 08/09/2026 07:00<br>
-            Nguồn: vnstock / KBS
+            Cập nhật:
+            09/09/2026
         </div>
 
-        <div class="status">
-            Cập nhật tốt
+        <div class="meta">
+            Nguồn: Stockbiz EOD
         </div>
+
     </div>
     
     <div class="card">
-        <div class="card-title">Vàng</div>
-        <div class="metric">Giá bán SJC</div>
 
-        <div class="value">147,100,000</div>
-        <div class="unit">VND/lượng</div>
+        <div class="module-name">
+            Vàng
+        </div>
 
-        
+        <div class="metric-name">
+            Giá vàng SJC
+        </div>
+
+        <div class="value">
+            147,100,000.00
+            <span class="unit">
+                VNĐ/lượng
+            </span>
+        </div>
+
+        <div class="change">
+            +0.41%
+        </div>
 
         <div class="meta">
-            Dữ liệu: 08/09/2026<br>
+            Cập nhật:
+            08/09/2026
+        </div>
+
+        <div class="meta">
             Nguồn: vnstock
         </div>
 
-        <div class="status">
-            Cập nhật tốt
-        </div>
     </div>
     
     <div class="card">
-        <div class="card-title">Dầu</div>
-        <div class="metric">Giá dầu</div>
 
-        <div class="value">97.68</div>
-        <div class="unit">USD/thùng</div>
+        <div class="module-name">
+            Dầu
+        </div>
 
-        <div class="change">Thay đổi: +1.45%</div>
+        <div class="metric-name">
+            Giá dầu WTI
+        </div>
+
+        <div class="value">
+            93.05
+            <span class="unit">
+                USD/thùng
+            </span>
+        </div>
+
+        <div class="change">
+            +1.72%
+        </div>
 
         <div class="meta">
-            Dữ liệu: 08/09/2026<br>
+            Cập nhật:
+            08/09/2026
+        </div>
+
+        <div class="meta">
             Nguồn: yfinance
         </div>
 
-        <div class="status">
-            Cập nhật tốt
-        </div>
     </div>
     
     <div class="card">
-        <div class="card-title">Bất động sản</div>
-        <div class="metric">Giao dịch BĐS thành công</div>
 
-        <div class="value">100,005</div>
-        <div class="unit">giao dịch</div>
-
-        
-
-        <div class="meta">
-            Dữ liệu: 30/06/2026<br>
-            Nguồn: Bộ Xây dựng
+        <div class="module-name">
+            Tỷ giá
         </div>
 
-        <div class="status">
-            Sẵn sàng
+        <div class="metric-name">
+            Tỷ giá USD/VND
         </div>
-    </div>
-    
-    <div class="card">
-        <div class="card-title">Tỷ giá</div>
-        <div class="metric">USD/VND</div>
 
-        <div class="value">26,150</div>
-        <div class="unit">VND/USD</div>
+        <div class="value">
+            26,150.00
+            <span class="unit">
+                VNĐ/USD
+            </span>
+        </div>
 
-        
+        <div class="change">
+            -0.23%
+        </div>
 
         <div class="meta">
-            Dữ liệu: 08/09/2026<br>
+            Cập nhật:
+            08/09/2026
+        </div>
+
+        <div class="meta">
             Nguồn: vnstock
         </div>
 
-        <div class="status">
-            Cập nhật tốt
-        </div>
     </div>
     
     <div class="card">
-        <div class="card-title">Lãi suất</div>
-        <div class="metric">Lãi suất tái cấp vốn</div>
 
-        <div class="value">4.50</div>
-        <div class="unit">%/năm</div>
+        <div class="module-name">
+            Lãi suất
+        </div>
 
-        
+        <div class="metric-name">
+            Lãi suất tái cấp vốn
+        </div>
+
+        <div class="value">
+            4.50
+            <span class="unit">
+                %/năm
+            </span>
+        </div>
+
+        <div class="change">
+            +0.00%
+        </div>
 
         <div class="meta">
-            Dữ liệu: 07/09/2026<br>
+            Cập nhật:
+            07/09/2026
+        </div>
+
+        <div class="meta">
             Nguồn: Dữ Liệu Kinh Tế
         </div>
 
-        <div class="status">
-            Cập nhật tốt
-        </div>
     </div>
     
+    <div class="card">
+
+        <div class="module-name">
+            Bất động sản
+        </div>
+
+        <div class="metric-name">
+            Giao dịch BĐS thành công
+        </div>
+
+        <div class="value">
+            100,005.00
+            <span class="unit">
+                giao dịch
+            </span>
+        </div>
+
+        <div class="change">
+            N/A
+        </div>
+
+        <div class="meta">
+            Cập nhật:
+            30/06/2026
+        </div>
+
+        <div class="meta">
+            Nguồn: Bo Xay Dung
+        </div>
+
+    </div>
+    
+
+</div>
+
+<div class="footer">
+
+Mỗi module sử dụng bản ghi mới nhất
+của metric chính được cấu hình.
+
+</div>
+
 </div>
 
 </body>
+
 </html>
