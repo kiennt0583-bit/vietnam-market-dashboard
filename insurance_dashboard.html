@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vietnam Market Dashboard — Bảo hiểm</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f7fa;
+    color: #1f2937;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 20px 48px;
+}
+
+.header {
+    margin-bottom: 28px;
+}
+
+.header h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+}
+
+.header p {
+    margin: 4px 0;
+    color: #6b7280;
+}
+
+.section {
+    margin-top: 28px;
+}
+
+.section h2 {
+    font-size: 20px;
+    margin-bottom: 14px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.label {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+.value {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.unit {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.footer {
+    margin-top: 34px;
+    font-size: 13px;
+    color: #6b7280;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🛡️ Bảo hiểm Việt Nam</h1>
+        <p>Kỳ dữ liệu: 2026-H1</p>
+        <p>Nguồn: NSO</p>
+    </div>
+
+    
+    <section class="section">
+        <h2>Tổng quan</h2>
+        <div class="grid">
+    
+        <div class="card">
+            <div class="label">Tổng doanh thu phí bảo hiểm</div>
+            <div class="value">117.9</div>
+            <div class="unit">nghìn tỷ đồng</div>
+        </div>
+        
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Doanh thu phí bảo hiểm</h2>
+        <div class="grid">
+    
+        <div class="card">
+            <div class="label">Bảo hiểm nhân thọ</div>
+            <div class="value">68.8</div>
+            <div class="unit">nghìn tỷ đồng</div>
+        </div>
+        
+        <div class="card">
+            <div class="label">Bảo hiểm phi nhân thọ</div>
+            <div class="value">49.1</div>
+            <div class="unit">nghìn tỷ đồng</div>
+        </div>
+        
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Tăng trưởng</h2>
+        <div class="grid">
+    
+        <div class="card">
+            <div class="label">Tổng doanh thu</div>
+            <div class="value">+2.2%</div>
+            <div class="unit">%</div>
+        </div>
+        
+        <div class="card">
+            <div class="label">Bảo hiểm nhân thọ</div>
+            <div class="value">-4.5%</div>
+            <div class="unit">%</div>
+        </div>
+        
+        <div class="card">
+            <div class="label">Bảo hiểm phi nhân thọ</div>
+            <div class="value">+13.5%</div>
+            <div class="unit">%</div>
+        </div>
+        
+        </div>
+    </section>
+    
+
+    <div class="footer">
+        Dữ liệu được tổng hợp từ nguồn chính thức của Cục Thống kê (NSO).
+    </div>
+
+</div>
+
+</body>
+</html>
